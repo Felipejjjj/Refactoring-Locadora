@@ -1,4 +1,10 @@
-package locadora;
+package locadora.item;
+
+
+import locadora.classificacao.Basico;
+import locadora.classificacao.Classificacao;
+import locadora.classificacao.Familia;
+import locadora.classificacao.Luxo;
 
 public class Automovel implements Alugavel {
 	  public static final int BASICO = 0;   // Carros hatch
@@ -8,13 +14,13 @@ public class Automovel implements Alugavel {
 	  private String descricao;
 	  private String placa;
 	  private int ano; // Ano de fabricacao
-	  private int codigoDoPreco;
+	  private Classificacao classificacao;
 	  
 	  public Automovel(String descricao, int ano, String placa, int codigoDoPreco) {
 	    this.descricao = descricao;
 	    this.placa = placa;
 	    this.ano = ano;
-	    this.codigoDoPreco = codigoDoPreco;
+	    setCodigoDoPreco(codigoDoPreco);
 	  }
 	 
 	  public String getDescricao() {
@@ -30,44 +36,28 @@ public class Automovel implements Alugavel {
 	  }
 	 
 	  public int getCodigoDoPreco() {
-	    return codigoDoPreco;
+	    return classificacao.getCodigoDoPreco();
 	  }
 	 
 	  public void setCodigoDoPreco(int codigoDoPreco) {
-	    this.codigoDoPreco = codigoDoPreco;
+	    switch(codigoDoPreco) {
+        case BASICO:
+            classificacao = new Basico();
+            break;
+        case FAMILIA:
+            classificacao = new Familia();
+            break;
+        case LUXO:
+            classificacao = new Luxo();
+            break;
+    }
 	  }
 
 	 public double getValorDaLocacao(int dias) {
-    double valor = 0.0;
-
-    switch(codigoDoPreco) {
-        case BASICO:
-            valor += dias * 90.0;
-            break;
-
-        case FAMILIA:
-            valor += dias * 130.0;
-            break;
-
-        case LUXO:
-            valor += dias * 200.0;
-
-            if(dias > 4) {
-                valor *= 0.9;
-            }
-            break;
-    }
-
-    return valor;
-}
+    return classificacao.getValorDaLocacao(dias);
+	}
 
 public int getPontosDeAlugadorFrequente(int dias) {
-    int pontos = 1;
-
-    if(codigoDoPreco == LUXO && dias > 2) {
-        pontos += 2;
-    }
-
-    return pontos;
+     return classificacao.getPontosDeAlugadorFrequente(dias);
 }
 }

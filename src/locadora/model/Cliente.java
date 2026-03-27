@@ -1,4 +1,4 @@
-package locadora;
+package locadora.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;

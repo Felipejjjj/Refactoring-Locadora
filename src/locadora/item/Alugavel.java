@@ -1,4 +1,4 @@
-package locadora;
+package locadora.item;
 
 public interface Alugavel {
     String getDescricao();

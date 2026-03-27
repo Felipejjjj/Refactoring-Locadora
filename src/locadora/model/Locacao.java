@@ -1,4 +1,6 @@
-package locadora;
+package locadora.model;
+
+import locadora.item.Alugavel;
 
 public class Locacao {
 	   private Alugavel item;

@@ -1,5 +1,8 @@
 //***** import para rodar o codigo original da lista1.2.1-GRASP-refactoring
-import locadora.*;
+//import locadora.*;
+import locadora.item.Automovel;
+import locadora.model.Cliente;
+import locadora.model.Locacao;
 
 //***** import para rodar o codigo alterado pela lista01.2.2-GRASP-refactoring
 // refactoring 1
