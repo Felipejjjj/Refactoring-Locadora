@@ -1,16 +1,16 @@
 package locadora;
 
 public class Locacao {
-	   private Automovel carro;
+	   private Alugavel item;
 	   private int diasAlugado;
 	 
-	   public Locacao(Automovel carro, int diasAlugado) {
-	      this.carro = carro;
+	   public Locacao(Alugavel item, int diasAlugado) {
+	      this.item = item;
 	      this.diasAlugado = diasAlugado;
 	   }
 	 
-	   public Automovel getCarro() {
-	      return carro;
+	   public Alugavel getItem() {
+	      return item;
 	   }
 	 
 	   public int getDiasAlugado() {
@@ -18,11 +18,11 @@ public class Locacao {
 	   }
 
 	   public double valorDeUmaLocacao(){
-		return carro.calcularValor(diasAlugado);		
+		return item.getValorDaLocacao(diasAlugado);		
 	}
 
 	public int calcularPontos() {
-    return carro.calcularPontos(diasAlugado);
+    return item.getPontosDeAlugadorFrequente(diasAlugado);
 	}
 	
 }

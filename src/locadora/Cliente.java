@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Cliente {
 	private String nome;
-	private List<Locacao> carrosAlugados = new ArrayList<Locacao>();
+	private List<Locacao> itensAlugados = new ArrayList<Locacao>();
 	private static final String fimDeLinha = System.lineSeparator();
 
 	public Cliente(String nome) {
@@ -18,14 +18,14 @@ public class Cliente {
 	}
 
 	public void adicionaLocacao(Locacao locacao) {
-		carrosAlugados.add(locacao);
+		itensAlugados.add(locacao);
 	}
 
 
 	public double getValorTotal(){
 		double total = 0.0;
 
-		Iterator<Locacao> locacoes = carrosAlugados.iterator();
+		Iterator<Locacao> locacoes = itensAlugados.iterator();
 
 		while(locacoes.hasNext()) {
 			 Locacao cada = locacoes.next();
@@ -37,7 +37,7 @@ public class Cliente {
 	public int getPontosTotaisDeAlugadorFrequente(){
 		int pontos = 0;
 
-		Iterator<Locacao> locacoes = carrosAlugados.iterator();
+		Iterator<Locacao> locacoes = itensAlugados.iterator();
 		while(locacoes.hasNext()) {
 			 Locacao cada = locacoes.next();
 			 pontos += cada.calcularPontos();
@@ -58,8 +58,8 @@ public class Cliente {
 	private String montarLinhaExtrato(int sequencia, Locacao locacao, double valor) {
     return String.format("%02d. %-20s  %4d    %2d     R$ %8.2f" + fimDeLinha,
             sequencia,
-            locacao.getCarro().getDescricao(),
-            locacao.getCarro().getAno(),
+            locacao.getItem().getDescricao(),
+            locacao.getItem().getAno(),
             locacao.getDiasAlugado(),
             valor);
 	}
@@ -94,7 +94,7 @@ public class Cliente {
 
     int sequencia = 0;
 
-    Iterator<Locacao> locacoes = carrosAlugados.iterator();
+    Iterator<Locacao> locacoes = itensAlugados.iterator();
 
     String resultado = "<html><body>" + fimDeLinha;
 
@@ -114,8 +114,8 @@ public class Cliente {
         resultado += String.format(
             "<tr><td>%02d.</td><td>%s</td><td>%4d</td><td>%2d</td><td>R$ %8.2f</td></tr>" + fimDeLinha,
             sequencia,
-            cada.getCarro().getDescricao(),
-            cada.getCarro().getAno(),
+            cada.getItem().getDescricao(),
+            cada.getItem().getAno(),
             cada.getDiasAlugado(),
             cada.valorDeUmaLocacao()
         );

@@ -1,6 +1,6 @@
 package locadora;
 
-public class Automovel {
+public class Automovel implements Alugavel {
 	  public static final int BASICO = 0;   // Carros hatch
 	  public static final int FAMILIA = 1;  // Carros Sedan ou SUV b�sico
 	  public static final int LUXO = 2;     // Carros padr�o luxo
@@ -37,7 +37,7 @@ public class Automovel {
 	    this.codigoDoPreco = codigoDoPreco;
 	  }
 
-	 public double calcularValor(int dias) {
+	 public double getValorDaLocacao(int dias) {
     double valor = 0.0;
 
     switch(codigoDoPreco) {
@@ -61,7 +61,7 @@ public class Automovel {
     return valor;
 }
 
-public int calcularPontos(int dias) {
+public int getPontosDeAlugadorFrequente(int dias) {
     int pontos = 1;
 
     if(codigoDoPreco == LUXO && dias > 2) {
