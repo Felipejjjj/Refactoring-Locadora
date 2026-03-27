@@ -43,7 +43,7 @@ public class Locadora {
 		c1.adicionaLocacao(new Locacao(new Automovel("Honda HRV", 2024, "KJD9745", Automovel.FAMILIA), 10));
 		c1.adicionaLocacao(new Locacao(new Automovel("Volkswagen Gol", 2024, "JJJ0055", Automovel.BASICO), 3));
 
-		System.out.println(c1.extrato());
+		System.out.println(c1.extratoHTML());
 		
 	}
 }

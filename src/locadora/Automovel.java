@@ -2,8 +2,8 @@ package locadora;
 
 public class Automovel {
 	  public static final int BASICO = 0;   // Carros hatch
-	  public static final int FAMILIA = 1;  // Carros Sedan ou SUV básico
-	  public static final int LUXO = 2;     // Carros padrão luxo
+	  public static final int FAMILIA = 1;  // Carros Sedan ou SUV bï¿½sico
+	  public static final int LUXO = 2;     // Carros padrï¿½o luxo
 
 	  private String descricao;
 	  private String placa;
@@ -36,4 +36,38 @@ public class Automovel {
 	  public void setCodigoDoPreco(int codigoDoPreco) {
 	    this.codigoDoPreco = codigoDoPreco;
 	  }
+
+	 public double calcularValor(int dias) {
+    double valor = 0.0;
+
+    switch(codigoDoPreco) {
+        case BASICO:
+            valor += dias * 90.0;
+            break;
+
+        case FAMILIA:
+            valor += dias * 130.0;
+            break;
+
+        case LUXO:
+            valor += dias * 200.0;
+
+            if(dias > 4) {
+                valor *= 0.9;
+            }
+            break;
+    }
+
+    return valor;
+}
+
+public int calcularPontos(int dias) {
+    int pontos = 1;
+
+    if(codigoDoPreco == LUXO && dias > 2) {
+        pontos += 2;
+    }
+
+    return pontos;
+}
 }
