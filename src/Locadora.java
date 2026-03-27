@@ -1,5 +1,9 @@
 //***** import para rodar o codigo original da lista1.2.1-GRASP-refactoring
 //import locadora.*;
+import locadora.extrato.Extrato;
+import locadora.extrato.ExtratoTexto;
+import locadora.extrato.ExtratoHTML;
+import locadora.extrato.GeradorExtrato;
 import locadora.item.Automovel;
 import locadora.model.Cliente;
 import locadora.model.Locacao;
@@ -46,7 +50,13 @@ public class Locadora {
 		c1.adicionaLocacao(new Locacao(new Automovel("Honda HRV", 2024, "KJD9745", Automovel.FAMILIA), 10));
 		c1.adicionaLocacao(new Locacao(new Automovel("Volkswagen Gol", 2024, "JJJ0055", Automovel.BASICO), 3));
 
-		System.out.println(c1.extratoHTML());
+
+		Extrato extrato1 = new ExtratoTexto();
+		Extrato extrato2 = new ExtratoHTML();
+
+		GeradorExtrato gerador = new GeradorExtrato(extrato1);
+
+		System.out.println(gerador.gerar(c1));
 		
 	}
 }
