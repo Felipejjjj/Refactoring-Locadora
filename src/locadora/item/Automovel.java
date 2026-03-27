@@ -5,11 +5,14 @@ import locadora.classificacao.Basico;
 import locadora.classificacao.Classificacao;
 import locadora.classificacao.Familia;
 import locadora.classificacao.Luxo;
+import locadora.classificacao.Premium;
 
 public class Automovel implements Alugavel {
 	  public static final int BASICO = 0;   // Carros hatch
-	  public static final int FAMILIA = 1;  // Carros Sedan ou SUV b�sico
-	  public static final int LUXO = 2;     // Carros padr�o luxo
+	  public static final int FAMILIA = 1;  // Carros Sedan ou SUV basico
+	  public static final int LUXO = 2;     // Carros padrao luxo
+	  public static final int PREMIUM = 3;  // Carros de luxo premium
+
 
 	  private String descricao;
 	  private String placa;
@@ -50,6 +53,9 @@ public class Automovel implements Alugavel {
         case LUXO:
             classificacao = new Luxo();
             break;
+		case PREMIUM:
+			classificacao = new Premium();
+			break;
     }
 	  }
 
